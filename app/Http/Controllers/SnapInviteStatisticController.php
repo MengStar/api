@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\SnapInviteStatisticRepository;
+use App\Utils\CommonValueCheck;
+use Illuminate\Support\Facades\Input;
 
 class SnapInviteStatisticController extends Controller
 {
@@ -19,17 +21,15 @@ class SnapInviteStatisticController extends Controller
         $this->snapInviteStatisticRepository = $snapInviteStatisticRepository;
     }
 
-    /**
-     *
-     */
     public function findAllSnaps()
     {
-
-        return $this->snapInviteStatisticRepository->findAll();
+        $per_page = CommonValueCheck::perPageCheck(Input::get('per_page'));
+        return $this->snapInviteStatisticRepository->findAll($per_page);
     }
 
     public function findSnapById($id)
     {
+
         return $this->snapInviteStatisticRepository->find($id);
     }
 }

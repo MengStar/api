@@ -14,15 +14,16 @@ use App\Models\SnapInviteStatistic;
 class SnapInviteStatisticRepository implements Repository
 {
 
-    public function findAll()
+
+    public function findAll($per_page)
     {
 
-        return SnapInviteStatistic::all();
+        return SnapInviteStatistic::paginate($per_page)->toJson();
     }
 
     public function find($id)
     {
-        return SnapInviteStatistic::find($id);
+        return SnapInviteStatistic::find($id)->toJson();
     }
 
     public function save($model)

@@ -11,7 +11,7 @@ namespace App\Repositories;
 
 interface Repository
 {
-    public function findAll();
+    public function findAll($per_page);
 
     public function find($id);
 
