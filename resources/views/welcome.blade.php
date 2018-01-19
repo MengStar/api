@@ -38,7 +38,7 @@
 <body>
 <div class="container">
     <div class="content">
-        <div><a href="snap">snaps</a></div>
+        <div><a href="snapInvite">snaps</a></div>
         {{--<div class="title">Laravel 5</div>--}}
     </div>
 </div>

@@ -11,9 +11,12 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('snap', 'SnapInviteStatisticController@findAllSnaps');
-Route::get('snap/{id}', 'SnapInviteStatisticController@findSnapById');
+Route::get('snapInvite', 'SnapInviteStatisticController@findAllSnaps');
+Route::get('snapInvite/date', 'SnapInviteStatisticController@findAllSnaps');
+Route::get('snapInvite/{id}', 'SnapInviteStatisticController@findSnapById');
+Route::post('snapInvite', 'SnapInviteStatisticController@addSnapInvite');

@@ -18,19 +18,31 @@ class SnapInviteStatisticRepository implements Repository
     public function findAll($per_page)
     {
 
-        return SnapInviteStatistic::paginate($per_page)->toJson();
+        return SnapInviteStatistic::paginate($per_page);
     }
 
     public function find($id)
     {
-        return SnapInviteStatistic::find($id)->toJson();
+        $ret = SnapInviteStatistic::find($id);
+        return empty($ret) ? "{}" : $ret;
     }
 
+    /**
+     * @param $model
+     * @return bool
+     */
     public function save($model)
     {
         $snap = new SnapInviteStatistic;
-        $snap->cs_id = 1;
-        $snap->save();
+        $snap->site_id = $model["site_id"];
+        $snap->cs_id = $model["cs_id"];
+        $snap->is_mobile = $model["is_mobile"];
+        $snap->style_id = $model["style_id"];
+        $snap->statistic_info = $model["statistic_info"];
+        $snap->statistic_time = $model['statistic_time'];
+
+        return $snap->save();
+
     }
 
     public function delete($model)
